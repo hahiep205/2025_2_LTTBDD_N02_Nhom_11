@@ -15,6 +15,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var stt = 0;
+  bool thongbao = true;
+  bool tienganh = false;
+  bool darkmode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +67,64 @@ class _HomeState extends State<Home> {
             ),
           ),
 
-          const Center(child: Text('Trang cài đặt')),
+          // TRANG CÀI ĐẶT
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: ListView(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text(
+                    'Cấu hình ứng dụng',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+
+                SwitchListTile(
+                  title: const Text('Thông báo'),
+                  secondary: const Icon(Icons.notifications),
+                  value: thongbao,
+                  onChanged: (bool value) {
+                    setState(() {
+                      thongbao = value;
+                    });
+                  },
+                ),
+
+                SwitchListTile(
+                  title: const Text('Ngôn ngữ: Tiếng Anh'),
+                  secondary: const Icon(Icons.language),
+                  value: tienganh,
+                  onChanged: (bool value) {
+                    setState(() {
+                      tienganh = value;
+                    });
+                  },
+                ),
+
+                SwitchListTile(
+                  title: const Text('Chế độ: Dark Mode'),
+                  secondary: const Icon(Icons.dark_mode),
+                  value: darkmode,
+                  onChanged: (bool value) {
+                    setState(() {
+                      darkmode = value;
+                    });
+                  },
+                ),
+
+                const Divider(),
+                const ListTile(
+                  title: Text('Phiên bản ứng dụng'),
+                  subtitle: Text('1.0.0'),
+                  trailing: Icon(Icons.info_outline),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
