@@ -1,4 +1,4 @@
-# flutter0703
+# NHÓM 11 - Lập trình cho thiết bị di động
 
 A new Flutter project.
 
