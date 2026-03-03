@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
   bool darkmode = false;
 
   int chondanhmuc = -1;
+  int tuvungindex = 0;
   bool hienmatsau = false;
 
   final List<String> categories = [
@@ -30,11 +31,68 @@ class _HomeState extends State<Home> {
     "Trường học",
   ];
 
-  final List<Map<String, String>> tuvung = [
-    {"en": "Dog", "vi": "Con chó"},
-    {"en": "Cat", "vi": "Con mèo"},
-    {"en": "Bird", "vi": "Con chim"},
-  ];
+  final Map<int, List<Map<String, String>>> tuvung = {
+    0: [
+      {"en": "Dog", "vi": "Con chó"},
+      {"en": "Cat", "vi": "Con mèo"},
+      {"en": "Bird", "vi": "Con chim"},
+      {"en": "Lion", "vi": "Sư tử"},
+      {"en": "Tiger", "vi": "Con hổ"},
+      {"en": "Elephant", "vi": "Con voi"},
+      {"en": "Monkey", "vi": "Con khỉ"},
+      {"en": "Rabbit", "vi": "Con thỏ"},
+      {"en": "Snake", "vi": "Con rắn"},
+      {"en": "Bear", "vi": "Con gấu"},
+    ],
+    1: [
+      {"en": "Apple", "vi": "Quả táo"},
+      {"en": "Banana", "vi": "Quả chuối"},
+      {"en": "Orange", "vi": "Quả cam"},
+      {"en": "Grapes", "vi": "Quả nho"},
+      {"en": "Mango", "vi": "Quả xoài"},
+      {"en": "Watermelon", "vi": "Dưa hấu"},
+      {"en": "Strawberry", "vi": "Dâu tây"},
+      {"en": "Pineapple", "vi": "Quả dứa"},
+      {"en": "Coconut", "vi": "Quả dừa"},
+      {"en": "Durian", "vi": "Sầu riêng"},
+    ],
+    2: [
+      {"en": "Car", "vi": "Xe hơi"},
+      {"en": "Bike", "vi": "Xe đạp"},
+      {"en": "Bus", "vi": "Xe buýt"},
+      {"en": "Motorbike", "vi": "Xe máy"},
+      {"en": "Train", "vi": "Tàu hỏa"},
+      {"en": "Airplane", "vi": "Máy bay"},
+      {"en": "Boat", "vi": "Thuyền"},
+      {"en": "Truck", "vi": "Xe tải"},
+      {"en": "Subway", "vi": "Tàu điện ngầm"},
+      {"en": "Helicopter", "vi": "Trực thăng"},
+    ],
+    3: [
+      {"en": "Father", "vi": "Cha/Bố"},
+      {"en": "Mother", "vi": "Mẹ"},
+      {"en": "Brother", "vi": "Anh/Em trai"},
+      {"en": "Sister", "vi": "Chị/Em gái"},
+      {"en": "Grandfather", "vi": "Ông nội/ngoại"},
+      {"en": "Grandmother", "vi": "Bà nội/ngoại"},
+      {"en": "Uncle", "vi": "Chú/Bác/Cậu"},
+      {"en": "Aunt", "vi": "Cô/Dì/Mợ"},
+      {"en": "Cousin", "vi": "Anh chị em họ"},
+      {"en": "Parents", "vi": "Ba mẹ"},
+    ],
+    4: [
+      {"en": "Teacher", "vi": "Giáo viên"},
+      {"en": "Student", "vi": "Học sinh"},
+      {"en": "Book", "vi": "Quyển sách"},
+      {"en": "Pen", "vi": "Cây bút"},
+      {"en": "Notebook", "vi": "Quyển vở"},
+      {"en": "Backpack", "vi": "Cặp sách"},
+      {"en": "Classroom", "vi": "Lớp học"},
+      {"en": "Board", "vi": "Cái bảng"},
+      {"en": "Library", "vi": "Thư viện"},
+      {"en": "Exam", "vi": "Kỳ thi"},
+    ],
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +111,7 @@ class _HomeState extends State<Home> {
               ? Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: GridView.builder(
-                    itemCount: 5,
+                    itemCount: categories.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
@@ -66,6 +124,8 @@ class _HomeState extends State<Home> {
                         onTap: () {
                           setState(() {
                             chondanhmuc = i;
+                            tuvungindex = 0;
+                            hienmatsau = false;
                           });
                         },
                         child: Container(
@@ -122,8 +182,8 @@ class _HomeState extends State<Home> {
                           alignment: Alignment.center,
                           child: Text(
                             hienmatsau
-                                ? tuvung[0]['vi']!
-                                : tuvung[0]['en']!,
+                                ? tuvung[chondanhmuc]![tuvungindex]['vi']!
+                                : tuvung[chondanhmuc]![tuvungindex]['en']!,
                             style: const TextStyle(
                               fontSize: 30,
                               color: Colors.white,
@@ -132,13 +192,40 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 20),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.arrow_back_ios),
+                            onPressed: tuvungindex > 0
+                                ? () => setState(() {
+                                    tuvungindex--;
+                                    hienmatsau = false;
+                                  })
+                                : null,
+                          ),
+                          Text(
+                            '${tuvungindex + 1} / ${tuvung[chondanhmuc]!.length}',
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.arrow_forward_ios),
+                            onPressed:
+                                tuvungindex <
+                                    tuvung[chondanhmuc]!.length - 1
+                                ? () => setState(() {
+                                    tuvungindex++;
+                                    hienmatsau = false;
+                                  })
+                                : null,
+                          ),
+                        ],
+                      ),
                       const SizedBox(height: 30),
                       ElevatedButton(
                         onPressed: () {
-                          setState(() {
-                            chondanhmuc = -1;
-                            hienmatsau = false;
-                          });
+                          setState(() => chondanhmuc = -1);
                         },
                         child: const Text('Quay lại'),
                       ),
