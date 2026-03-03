@@ -21,6 +21,13 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> categories = [
+      "Động vật",
+      "Trái cây",
+      "Giao thông",
+      "Gia đình",
+      "Trường học",
+    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flashcard'),
@@ -30,7 +37,47 @@ class _HomeState extends State<Home> {
         index: stt,
         children: [
           const Center(child: Text('Trang chủ')),
-          const Center(child: Text('Trang study')),
+
+          // TRANG STUDY
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GridView.builder(
+              itemCount: 5,
+              gridDelegate:
+                  const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                    childAspectRatio: 1,
+                  ),
+              itemBuilder: (context, i) {
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade50,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.blueAccent),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.school,
+                        size: 40,
+                        color: Colors.blueAccent,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        categories[i],
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
 
           // TRANG THÔNG TIN
           Padding(
