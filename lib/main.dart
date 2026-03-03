@@ -19,15 +19,25 @@ class _HomeState extends State<Home> {
   bool tienganh = false;
   bool darkmode = false;
 
+  int chondanhmuc = -1;
+  bool hienmatsau = false;
+
+  final List<String> categories = [
+    "Động vật",
+    "Trái cây",
+    "Giao thông",
+    "Gia đình",
+    "Trường học",
+  ];
+
+  final List<Map<String, String>> tuvung = [
+    {"en": "Dog", "vi": "Con chó"},
+    {"en": "Cat", "vi": "Con mèo"},
+    {"en": "Bird", "vi": "Con chim"},
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final List<String> categories = [
-      "Động vật",
-      "Trái cây",
-      "Giao thông",
-      "Gia đình",
-      "Trường học",
-    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flashcard'),
@@ -39,45 +49,102 @@ class _HomeState extends State<Home> {
           const Center(child: Text('Trang chủ')),
 
           // TRANG STUDY
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: GridView.builder(
-              itemCount: 5,
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 20,
-                    childAspectRatio: 1,
+          chondanhmuc == -1
+              ? Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: GridView.builder(
+                    itemCount: 5,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 20,
+                          crossAxisSpacing: 20,
+                          childAspectRatio: 1,
+                        ),
+                    itemBuilder: (context, i) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            chondanhmuc = i;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.blue.shade50,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Colors.blueAccent),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.school,
+                                size: 40,
+                                color: Colors.blueAccent,
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                categories[i],
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
-              itemBuilder: (context, i) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.blueAccent),
-                  ),
+                )
+              : Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.school,
-                        size: 40,
-                        color: Colors.blueAccent,
-                      ),
-                      const SizedBox(height: 10),
                       Text(
-                        categories[i],
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
+                        'Chủ đề: ${categories[chondanhmuc]}',
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      const SizedBox(height: 20),
+
+                      GestureDetector(
+                        onTap: () {
+                          setState(() => hienmatsau = !hienmatsau);
+                        },
+                        child: Container(
+                          width: 250,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: hienmatsau
+                                ? const Color.fromARGB(255, 86, 255, 14)
+                                : Colors.blueAccent,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            hienmatsau
+                                ? tuvung[0]['vi']!
+                                : tuvung[0]['en']!,
+                            style: const TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
+                      ),
+                      const SizedBox(height: 30),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            chondanhmuc = -1;
+                            hienmatsau = false;
+                          });
+                        },
+                        child: const Text('Quay lại'),
                       ),
                     ],
                   ),
-                );
-              },
-            ),
-          ),
+                ),
 
           // TRANG THÔNG TIN
           Padding(
