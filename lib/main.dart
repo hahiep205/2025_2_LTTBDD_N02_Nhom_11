@@ -19,7 +19,9 @@ class _HomeState extends State<Home> {
   bool tienganh = false;
   bool darkmode = false;
 
-  int chondanhmuc = -1;
+  int study = 0;
+  int quiz = 0;
+  int flashcard = -1;
   int tuvungindex = 0;
   bool hienmatsau = false;
 
@@ -107,131 +109,311 @@ class _HomeState extends State<Home> {
           const Center(child: Text('Trang chủ')),
 
           // TRANG STUDY
-          chondanhmuc == -1
-              ? Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: GridView.builder(
-                    itemCount: categories.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 20,
-                          crossAxisSpacing: 20,
-                          childAspectRatio: 1,
-                        ),
-                    itemBuilder: (context, i) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            chondanhmuc = i;
-                            tuvungindex = 0;
-                            hienmatsau = false;
-                          });
-                        },
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: study == 0
+                // DANH MỤC
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () => setState(() => study = 1),
                         child: Container(
+                          padding: const EdgeInsets.all(20),
+                          margin: const EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
-                            color: Colors.blue.shade50,
-                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
                             border: Border.all(color: Colors.blueAccent),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                          child: const Row(
                             children: [
-                              const Icon(
-                                Icons.school,
-                                size: 40,
-                                color: Colors.blueAccent,
-                              ),
-                              const SizedBox(height: 10),
+                              Icon(Icons.style, size: 40),
+                              SizedBox(width: 20),
                               Text(
-                                categories[i],
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                "Chế độ Lật thẻ (Flashcard)",
+                                style: TextStyle(fontSize: 18),
                               ),
                             ],
                           ),
                         ),
-                      );
-                    },
-                  ),
-                )
-              : Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Chủ đề: ${categories[chondanhmuc]}',
-                        style: const TextStyle(fontSize: 20),
                       ),
-                      const SizedBox(height: 20),
-
                       GestureDetector(
-                        onTap: () {
-                          setState(() => hienmatsau = !hienmatsau);
-                        },
+                        onTap: () => setState(() => study = 2),
                         child: Container(
-                          width: 250,
-                          height: 150,
+                          padding: const EdgeInsets.all(20),
+                          margin: const EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
-                            color: hienmatsau
-                                ? const Color.fromARGB(255, 86, 255, 14)
-                                : Colors.blueAccent,
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Colors.blueAccent),
                           ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            hienmatsau
-                                ? tuvung[chondanhmuc]![tuvungindex]['vi']!
-                                : tuvung[chondanhmuc]![tuvungindex]['en']!,
-                            style: const TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          child: const Row(
+                            children: [
+                              Icon(Icons.quiz, size: 40),
+                              SizedBox(width: 20),
+                              Text(
+                                "Chế độ Trắc nghiệm (Quiz)",
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.arrow_back_ios),
-                            onPressed: tuvungindex > 0
-                                ? () => setState(() {
-                                    tuvungindex--;
-                                    hienmatsau = false;
-                                  })
-                                : null,
+                      GestureDetector(
+                        onTap: () => setState(() => study = 3),
+                        child: Container(
+                          padding: const EdgeInsets.all(20),
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Colors.blueAccent),
                           ),
-                          Text(
-                            '${tuvungindex + 1} / ${tuvung[chondanhmuc]!.length}',
+                          child: const Row(
+                            children: [
+                              Icon(Icons.list, size: 40),
+                              SizedBox(width: 20),
+                              Text(
+                                "Danh sách Flashcard đã đánh dấu",
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ],
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.arrow_forward_ios),
-                            onPressed:
-                                tuvungindex <
-                                    tuvung[chondanhmuc]!.length - 1
-                                ? () => setState(() {
-                                    tuvungindex++;
-                                    hienmatsau = false;
-                                  })
-                                : null,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 30),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() => chondanhmuc = -1);
-                        },
-                        child: const Text('Quay lại'),
+                        ),
                       ),
                     ],
-                  ),
-                ),
+                  )
+                : study == 1
+                // LẬT THẺ
+                ? (flashcard == -1
+                      ? Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: TextButton.icon(
+                                onPressed: () => setState(() => study = 0),
+                                icon: const Icon(Icons.arrow_back),
+                                label: const Text("Quay lại"),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Expanded(
+                              child: GridView.builder(
+                                itemCount: categories.length,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      mainAxisSpacing: 10,
+                                      crossAxisSpacing: 10,
+                                    ),
+                                itemBuilder: (context, i) =>
+                                    GestureDetector(
+                                      onTap: () => setState(() {
+                                        flashcard = i;
+                                        tuvungindex = 0;
+                                        hienmatsau = false;
+                                      }),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          border: Border.all(
+                                            color: Colors.blueAccent,
+                                          ),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Icon(
+                                              Icons.school,
+                                              color: Colors.blueAccent,
+                                            ),
+                                            Text(categories[i]),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : Column(
+                          // FUNC LẬT THẺ
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: TextButton.icon(
+                                onPressed: () =>
+                                    setState(() => flashcard = -1),
+                                icon: const Icon(Icons.arrow_back),
+                                label: const Text("Quay lại"),
+                              ),
+                            ),
+                            const Spacer(),
+                            Text(
+                              'Chủ đề: ${categories[flashcard]}',
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                            const SizedBox(height: 20),
+                            GestureDetector(
+                              onTap: () =>
+                                  setState(() => hienmatsau = !hienmatsau),
+                              child: Container(
+                                width: 250,
+                                height: 150,
+                                decoration: BoxDecoration(
+                                  color: hienmatsau
+                                      ? Colors.green
+                                      : Colors.blueAccent,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  hienmatsau
+                                      ? tuvung[flashcard]![tuvungindex]['vi']!
+                                      : tuvung[flashcard]![tuvungindex]['en']!,
+                                  style: const TextStyle(
+                                    fontSize: 30,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.arrow_back_ios),
+                                  onPressed: tuvungindex > 0
+                                      ? () => setState(() {
+                                          tuvungindex--;
+                                          hienmatsau = false;
+                                        })
+                                      : null,
+                                ),
+                                Text(
+                                  '${tuvungindex + 1} / ${tuvung[flashcard]!.length}',
+                                ),
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.arrow_forward_ios,
+                                  ),
+                                  onPressed:
+                                      tuvungindex <
+                                          tuvung[flashcard]!.length - 1
+                                      ? () => setState(() {
+                                          tuvungindex++;
+                                          hienmatsau = false;
+                                        })
+                                      : null,
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                          ],
+                        ))
+                : (quiz == 0
+                      // CHỌN LOẠI QUIZ
+                      ? Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: TextButton.icon(
+                                onPressed: () => setState(() => study = 0),
+                                icon: const Icon(Icons.arrow_back),
+                                label: const Text("Quay lại"),
+                              ),
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () => setState(() => quiz = 1),
+                                    child: Container(
+                                      height: 150,
+                                      margin: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(15),
+                                        border: Border.all(
+                                          color: Colors.blueAccent,
+                                        ),
+                                      ),
+                                      child: const Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.shuffle, size: 40),
+                                          Text("Đề Random"),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () => setState(() => quiz = 2),
+                                    child: Container(
+                                      height: 150,
+                                      margin: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(15),
+                                        border: Border.all(
+                                          color: Colors.blueAccent,
+                                        ),
+                                      ),
+                                      child: const Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.list_alt, size: 40),
+                                          Text("Đề Tự chọn"),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: TextButton.icon(
+                                onPressed: () => setState(() => quiz = 0),
+                                icon: const Icon(Icons.arrow_back),
+                                label: const Text("Quay lại"),
+                              ),
+                            ),
+                            const Spacer(),
+                            Text(
+                              quiz == 1 ? "Đề Random" : "Đề Tự chọn",
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 30),
+                            const Text(
+                              "Nội dung câu hỏi",
+                              textAlign: TextAlign.center,
+                            ),
+                            const Spacer(),
+                          ],
+                        )),
+          ),
 
           // TRANG THÔNG TIN
           Padding(
