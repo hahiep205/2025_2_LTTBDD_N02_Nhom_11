@@ -35,64 +35,72 @@ class _HomeState extends State<Home> {
 
   final Map<int, List<Map<String, String>>> tuvung = {
     0: [
-      {"en": "Dog", "vi": "Con chó"},
-      {"en": "Cat", "vi": "Con mèo"},
-      {"en": "Bird", "vi": "Con chim"},
-      {"en": "Lion", "vi": "Sư tử"},
-      {"en": "Tiger", "vi": "Con hổ"},
-      {"en": "Elephant", "vi": "Con voi"},
-      {"en": "Monkey", "vi": "Con khỉ"},
-      {"en": "Rabbit", "vi": "Con thỏ"},
-      {"en": "Snake", "vi": "Con rắn"},
-      {"en": "Bear", "vi": "Con gấu"},
+      {"en": "Dog", "vi": "Con chó", "image": "images/img.jpg"},
+      {"en": "Cat", "vi": "Con mèo", "image": "images/img.jpg"},
+      {"en": "Bird", "vi": "Con chim", "image": "images/img.jpg"},
+      {"en": "Lion", "vi": "Sư tử", "image": "images/img.jpg"},
+      {"en": "Tiger", "vi": "Con hổ", "image": "images/img.jpg"},
+      {"en": "Elephant", "vi": "Con voi", "image": "images/img.jpg"},
+      {"en": "Monkey", "vi": "Con khỉ", "image": "images/img.jpg"},
+      {"en": "Rabbit", "vi": "Con thỏ", "image": "images/img.jpg"},
+      {"en": "Snake", "vi": "Con rắn", "image": "images/img.jpg"},
+      {"en": "Bear", "vi": "Con gấu", "image": "images/img.jpg"},
     ],
     1: [
-      {"en": "Apple", "vi": "Quả táo"},
-      {"en": "Banana", "vi": "Quả chuối"},
-      {"en": "Orange", "vi": "Quả cam"},
-      {"en": "Grapes", "vi": "Quả nho"},
-      {"en": "Mango", "vi": "Quả xoài"},
-      {"en": "Watermelon", "vi": "Dưa hấu"},
-      {"en": "Strawberry", "vi": "Dâu tây"},
-      {"en": "Pineapple", "vi": "Quả dứa"},
-      {"en": "Coconut", "vi": "Quả dừa"},
-      {"en": "Durian", "vi": "Sầu riêng"},
+      {"en": "Apple", "vi": "Quả táo", "image": "images/img.jpg"},
+      {"en": "Banana", "vi": "Quả chuối", "image": "images/img.jpg"},
+      {"en": "Orange", "vi": "Quả cam", "image": "images/img.jpg"},
+      {"en": "Grapes", "vi": "Quả nho", "image": "images/img.jpg"},
+      {"en": "Mango", "vi": "Quả xoài", "image": "images/img.jpg"},
+      {"en": "Watermelon", "vi": "Dưa hấu", "image": "images/img.jpg"},
+      {"en": "Strawberry", "vi": "Dâu tây", "image": "images/img.jpg"},
+      {"en": "Pineapple", "vi": "Quả dứa", "image": "images/img.jpg"},
+      {"en": "Coconut", "vi": "Quả dừa", "image": "images/img.jpg"},
+      {"en": "Durian", "vi": "Sầu riêng", "image": "images/img.jpg"},
     ],
     2: [
-      {"en": "Car", "vi": "Xe hơi"},
-      {"en": "Bike", "vi": "Xe đạp"},
-      {"en": "Bus", "vi": "Xe buýt"},
-      {"en": "Motorbike", "vi": "Xe máy"},
-      {"en": "Train", "vi": "Tàu hỏa"},
-      {"en": "Airplane", "vi": "Máy bay"},
-      {"en": "Boat", "vi": "Thuyền"},
-      {"en": "Truck", "vi": "Xe tải"},
-      {"en": "Subway", "vi": "Tàu điện ngầm"},
-      {"en": "Helicopter", "vi": "Trực thăng"},
+      {"en": "Car", "vi": "Xe hơi", "image": "images/img.jpg"},
+      {"en": "Bike", "vi": "Xe đạp", "image": "images/img.jpg"},
+      {"en": "Bus", "vi": "Xe buýt", "image": "images/img.jpg"},
+      {"en": "Motorbike", "vi": "Xe máy", "image": "images/img.jpg"},
+      {"en": "Train", "vi": "Tàu hỏa", "image": "images/img.jpg"},
+      {"en": "Airplane", "vi": "Máy bay", "image": "images/img.jpg"},
+      {"en": "Boat", "vi": "Thuyền", "image": "images/img.jpg"},
+      {"en": "Truck", "vi": "Xe tải", "image": "images/img.jpg"},
+      {"en": "Subway", "vi": "Tàu điện ngầm", "image": "images/img.jpg"},
+      {"en": "Helicopter", "vi": "Trực thăng", "image": "images/img.jpg"},
     ],
     3: [
-      {"en": "Father", "vi": "Cha/Bố"},
-      {"en": "Mother", "vi": "Mẹ"},
-      {"en": "Brother", "vi": "Anh/Em trai"},
-      {"en": "Sister", "vi": "Chị/Em gái"},
-      {"en": "Grandfather", "vi": "Ông nội/ngoại"},
-      {"en": "Grandmother", "vi": "Bà nội/ngoại"},
-      {"en": "Uncle", "vi": "Chú/Bác/Cậu"},
-      {"en": "Aunt", "vi": "Cô/Dì/Mợ"},
-      {"en": "Cousin", "vi": "Anh chị em họ"},
-      {"en": "Parents", "vi": "Ba mẹ"},
+      {"en": "Father", "vi": "Cha/Bố", "image": "images/img.jpg"},
+      {"en": "Mother", "vi": "Mẹ", "image": "images/img.jpg"},
+      {"en": "Brother", "vi": "Anh/Em trai", "image": "images/img.jpg"},
+      {"en": "Sister", "vi": "Chị/Em gái", "image": "images/img.jpg"},
+      {
+        "en": "Grandfather",
+        "vi": "Ông nội/ngoại",
+        "image": "images/img.jpg",
+      },
+      {
+        "en": "Grandmother",
+        "vi": "Bà nội/ngoại",
+        "image": "images/img.jpg",
+      },
+      {"en": "Uncle", "vi": "Chú/Bác/Cậu", "image": "images/img.jpg"},
+      {"en": "Aunt", "vi": "Cô/Dì/Mợ", "image": "images/img.jpg"},
+      {"en": "Cousin", "vi": "Anh chị em họ", "image": "images/img.jpg"},
+      {"en": "Parents", "vi": "Ba mẹ", "image": "images/img.jpg"},
     ],
     4: [
-      {"en": "Teacher", "vi": "Giáo viên"},
-      {"en": "Student", "vi": "Học sinh"},
-      {"en": "Book", "vi": "Quyển sách"},
-      {"en": "Pen", "vi": "Cây bút"},
-      {"en": "Notebook", "vi": "Quyển vở"},
-      {"en": "Backpack", "vi": "Cặp sách"},
-      {"en": "Classroom", "vi": "Lớp học"},
-      {"en": "Board", "vi": "Cái bảng"},
-      {"en": "Library", "vi": "Thư viện"},
-      {"en": "Exam", "vi": "Kỳ thi"},
+      {"en": "Teacher", "vi": "Giáo viên", "image": "images/img.jpg"},
+      {"en": "Student", "vi": "Học sinh", "image": "images/img.jpg"},
+      {"en": "Book", "vi": "Quyển sách", "image": "images/img.jpg"},
+      {"en": "Pen", "vi": "Cây bút", "image": "images/img.jpg"},
+      {"en": "Notebook", "vi": "Quyển vở", "image": "images/img.jpg"},
+      {"en": "Backpack", "vi": "Cặp sách", "image": "images/img.jpg"},
+      {"en": "Classroom", "vi": "Lớp học", "image": "images/img.jpg"},
+      {"en": "Board", "vi": "Cái bảng", "image": "images/img.jpg"},
+      {"en": "Library", "vi": "Thư viện", "image": "images/img.jpg"},
+      {"en": "Exam", "vi": "Kỳ thi", "image": "images/img.jpg"},
     ],
   };
 
@@ -240,8 +248,8 @@ class _HomeState extends State<Home> {
                             ),
                           ],
                         )
+                      // FUNC LẬT THẺ
                       : Column(
-                          // FUNC LẬT THẺ
                           children: [
                             Align(
                               alignment: Alignment.topLeft,
@@ -262,24 +270,42 @@ class _HomeState extends State<Home> {
                               onTap: () =>
                                   setState(() => hienmatsau = !hienmatsau),
                               child: Container(
-                                width: 250,
-                                height: 150,
+                                width: 320,
+                                height: 200,
                                 decoration: BoxDecoration(
                                   color: hienmatsau
                                       ? Colors.green
                                       : Colors.blueAccent,
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                alignment: Alignment.center,
-                                child: Text(
-                                  hienmatsau
-                                      ? tuvung[flashcard]![tuvungindex]['vi']!
-                                      : tuvung[flashcard]![tuvungindex]['en']!,
-                                  style: const TextStyle(
-                                    fontSize: 30,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                  children: [
+                                    if (!hienmatsau)
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          bottom: 15,
+                                        ),
+                                        height: 100,
+                                        child: Image.asset(
+                                          tuvung[flashcard]![tuvungindex]['image']!,
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+
+                                    Text(
+                                      hienmatsau
+                                          ? tuvung[flashcard]![tuvungindex]['vi']!
+                                          : tuvung[flashcard]![tuvungindex]['en']!,
+                                      style: const TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -298,6 +324,10 @@ class _HomeState extends State<Home> {
                                 ),
                                 Text(
                                   '${tuvungindex + 1} / ${tuvung[flashcard]!.length}',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                                 IconButton(
                                   icon: const Icon(
