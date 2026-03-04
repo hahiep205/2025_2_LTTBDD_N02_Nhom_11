@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/settings_screen.dart';
 
 void main() {
   runApp(
@@ -481,62 +482,13 @@ class _HomeState extends State<Home> {
           ),
 
           // TRANG CÀI ĐẶT
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: ListView(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    'Cấu hình ứng dụng',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-
-                SwitchListTile(
-                  title: const Text('Thông báo'),
-                  secondary: const Icon(Icons.notifications),
-                  value: thongbao,
-                  onChanged: (bool value) {
-                    setState(() {
-                      thongbao = value;
-                    });
-                  },
-                ),
-
-                SwitchListTile(
-                  title: const Text('Ngôn ngữ: Tiếng Anh'),
-                  secondary: const Icon(Icons.language),
-                  value: tienganh,
-                  onChanged: (bool value) {
-                    setState(() {
-                      tienganh = value;
-                    });
-                  },
-                ),
-
-                SwitchListTile(
-                  title: const Text('Chế độ: Dark Mode'),
-                  secondary: const Icon(Icons.dark_mode),
-                  value: darkmode,
-                  onChanged: (bool value) {
-                    setState(() {
-                      darkmode = value;
-                    });
-                  },
-                ),
-
-                const Divider(),
-                const ListTile(
-                  title: Text('Phiên bản ứng dụng'),
-                  subtitle: Text('1.0.0'),
-                  trailing: Icon(Icons.info_outline),
-                ),
-              ],
-            ),
+          SettingsScreen(
+            thongbao: thongbao,
+            tienganh: tienganh,
+            darkmode: darkmode,
+            batthongbao: (val) => setState(() => thongbao = val),
+            battienganh: (val) => setState(() => tienganh = val),
+            batdarkmode: (val) => setState(() => darkmode = val),
           ),
         ],
       ),
