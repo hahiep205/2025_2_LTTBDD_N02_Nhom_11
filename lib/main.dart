@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/settings_screen.dart';
+import 'screens/about_screen.dart';
 
 void main() {
   runApp(
@@ -447,39 +448,7 @@ class _HomeState extends State<Home> {
           ),
 
           // TRANG THÔNG TIN
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const CircleAvatar(
-                  radius: 45,
-                  backgroundColor: Colors.blueAccent,
-                  child: Icon(Icons.group, size: 42, color: Colors.white),
-                ),
-                const SizedBox(height: 15),
-                const Text(
-                  'NHÓM 11 - Lập Trình Cho Thiết Bị Di Động',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                const ListTile(
-                  leading: const Icon(Icons.person, size: 24),
-                  title: const Text(
-                    'Hà Văn Hiệp',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                  subtitle: const Text(
-                    'MSSV: 23010104',
-                    style: TextStyle(fontSize: 13),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          const AboutScreen(),
 
           // TRANG CÀI ĐẶT
           SettingsScreen(
@@ -492,6 +461,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
+
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: stt,
         type: BottomNavigationBarType.fixed,
