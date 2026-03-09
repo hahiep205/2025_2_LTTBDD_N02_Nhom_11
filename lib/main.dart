@@ -35,74 +35,322 @@ class _HomeState extends State<Home> {
     "Trường học",
   ];
 
-  final Map<int, List<Map<String, String>>> tuvung = {
+  final Map<int, List<Map<String, dynamic>>> tuvung = {
     0: [
-      {"en": "Dog", "vi": "Con chó", "image": "images/img.jpg"},
-      {"en": "Cat", "vi": "Con mèo", "image": "images/img.jpg"},
-      {"en": "Bird", "vi": "Con chim", "image": "images/img.jpg"},
-      {"en": "Lion", "vi": "Sư tử", "image": "images/img.jpg"},
-      {"en": "Tiger", "vi": "Con hổ", "image": "images/img.jpg"},
-      {"en": "Elephant", "vi": "Con voi", "image": "images/img.jpg"},
-      {"en": "Monkey", "vi": "Con khỉ", "image": "images/img.jpg"},
-      {"en": "Rabbit", "vi": "Con thỏ", "image": "images/img.jpg"},
-      {"en": "Snake", "vi": "Con rắn", "image": "images/img.jpg"},
-      {"en": "Bear", "vi": "Con gấu", "image": "images/img.jpg"},
+      {
+        "en": "Dog",
+        "vi": "Con chó",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Cat",
+        "vi": "Con mèo",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Bird",
+        "vi": "Con chim",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Lion",
+        "vi": "Sư tử",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Tiger",
+        "vi": "Con hổ",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Elephant",
+        "vi": "Con voi",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Monkey",
+        "vi": "Con khỉ",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Rabbit",
+        "vi": "Con thỏ",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Snake",
+        "vi": "Con rắn",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Bear",
+        "vi": "Con gấu",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
     ],
     1: [
-      {"en": "Apple", "vi": "Quả táo", "image": "images/img.jpg"},
-      {"en": "Banana", "vi": "Quả chuối", "image": "images/img.jpg"},
-      {"en": "Orange", "vi": "Quả cam", "image": "images/img.jpg"},
-      {"en": "Grapes", "vi": "Quả nho", "image": "images/img.jpg"},
-      {"en": "Mango", "vi": "Quả xoài", "image": "images/img.jpg"},
-      {"en": "Watermelon", "vi": "Dưa hấu", "image": "images/img.jpg"},
-      {"en": "Strawberry", "vi": "Dâu tây", "image": "images/img.jpg"},
-      {"en": "Pineapple", "vi": "Quả dứa", "image": "images/img.jpg"},
-      {"en": "Coconut", "vi": "Quả dừa", "image": "images/img.jpg"},
-      {"en": "Durian", "vi": "Sầu riêng", "image": "images/img.jpg"},
+      {
+        "en": "Apple",
+        "vi": "Quả táo",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Banana",
+        "vi": "Quả chuối",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Orange",
+        "vi": "Quả cam",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Grapes",
+        "vi": "Quả nho",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Mango",
+        "vi": "Quả xoài",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Watermelon",
+        "vi": "Dưa hấu",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Strawberry",
+        "vi": "Dâu tây",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Pineapple",
+        "vi": "Quả dứa",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Coconut",
+        "vi": "Quả dừa",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Durian",
+        "vi": "Sầu riêng",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Papaya",
+        "vi": "Quả đu đủ",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
     ],
     2: [
-      {"en": "Car", "vi": "Xe hơi", "image": "images/img.jpg"},
-      {"en": "Bike", "vi": "Xe đạp", "image": "images/img.jpg"},
-      {"en": "Bus", "vi": "Xe buýt", "image": "images/img.jpg"},
-      {"en": "Motorbike", "vi": "Xe máy", "image": "images/img.jpg"},
-      {"en": "Train", "vi": "Tàu hỏa", "image": "images/img.jpg"},
-      {"en": "Airplane", "vi": "Máy bay", "image": "images/img.jpg"},
-      {"en": "Boat", "vi": "Thuyền", "image": "images/img.jpg"},
-      {"en": "Truck", "vi": "Xe tải", "image": "images/img.jpg"},
-      {"en": "Subway", "vi": "Tàu điện ngầm", "image": "images/img.jpg"},
-      {"en": "Helicopter", "vi": "Trực thăng", "image": "images/img.jpg"},
+      {
+        "en": "Car",
+        "vi": "Xe hơi",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Bike",
+        "vi": "Xe đạp",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Bus",
+        "vi": "Xe buýt",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Motorbike",
+        "vi": "Xe máy",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Train",
+        "vi": "Tàu hỏa",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Airplane",
+        "vi": "Máy bay",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Boat",
+        "vi": "Thuyền",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Truck",
+        "vi": "Xe tải",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Subway",
+        "vi": "Tàu điện ngầm",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Helicopter",
+        "vi": "Trực thăng",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
     ],
     3: [
-      {"en": "Father", "vi": "Cha/Bố", "image": "images/img.jpg"},
-      {"en": "Mother", "vi": "Mẹ", "image": "images/img.jpg"},
-      {"en": "Brother", "vi": "Anh/Em trai", "image": "images/img.jpg"},
-      {"en": "Sister", "vi": "Chị/Em gái", "image": "images/img.jpg"},
+      {
+        "en": "Father",
+        "vi": "Cha/Bố",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Mother",
+        "vi": "Mẹ",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Brother",
+        "vi": "Anh/Em trai",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Sister",
+        "vi": "Chị/Em gái",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
       {
         "en": "Grandfather",
         "vi": "Ông nội/ngoại",
         "image": "images/img.jpg",
+        "saved": false,
       },
       {
         "en": "Grandmother",
         "vi": "Bà nội/ngoại",
         "image": "images/img.jpg",
+        "saved": false,
       },
-      {"en": "Uncle", "vi": "Chú/Bác/Cậu", "image": "images/img.jpg"},
-      {"en": "Aunt", "vi": "Cô/Dì/Mợ", "image": "images/img.jpg"},
-      {"en": "Cousin", "vi": "Anh chị em họ", "image": "images/img.jpg"},
-      {"en": "Parents", "vi": "Ba mẹ", "image": "images/img.jpg"},
+      {
+        "en": "Uncle",
+        "vi": "Chú/Bác/Cậu",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Aunt",
+        "vi": "Cô/Dì/Mợ",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Cousin",
+        "vi": "Anh chị em họ",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Parents",
+        "vi": "Ba mẹ",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
     ],
     4: [
-      {"en": "Teacher", "vi": "Giáo viên", "image": "images/img.jpg"},
-      {"en": "Student", "vi": "Học sinh", "image": "images/img.jpg"},
-      {"en": "Book", "vi": "Quyển sách", "image": "images/img.jpg"},
-      {"en": "Pen", "vi": "Cây bút", "image": "images/img.jpg"},
-      {"en": "Notebook", "vi": "Quyển vở", "image": "images/img.jpg"},
-      {"en": "Backpack", "vi": "Cặp sách", "image": "images/img.jpg"},
-      {"en": "Classroom", "vi": "Lớp học", "image": "images/img.jpg"},
-      {"en": "Board", "vi": "Cái bảng", "image": "images/img.jpg"},
-      {"en": "Library", "vi": "Thư viện", "image": "images/img.jpg"},
-      {"en": "Exam", "vi": "Kỳ thi", "image": "images/img.jpg"},
+      {
+        "en": "Teacher",
+        "vi": "Giáo viên",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Student",
+        "vi": "Học sinh",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Book",
+        "vi": "Quyển sách",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Pen",
+        "vi": "Cây bút",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Notebook",
+        "vi": "Quyển vở",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Backpack",
+        "vi": "Cặp sách",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Classroom",
+        "vi": "Lớp học",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Board",
+        "vi": "Cái bảng",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Library",
+        "vi": "Thư viện",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
+      {
+        "en": "Exam",
+        "vi": "Kỳ thi",
+        "image": "images/img.jpg",
+        "saved": false,
+      },
     ],
   };
 
@@ -124,87 +372,94 @@ class _HomeState extends State<Home> {
             child: study == 0
                 // DANH MỤC
                 ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       GestureDetector(
                         onTap: () => setState(() => study = 1),
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
+                        child: Card(
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
-                            border: Border.all(color: Colors.blueAccent),
                           ),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.style, size: 40),
-                              SizedBox(width: 20),
-                              Text(
-                                "Chế độ Lật thẻ (Flashcard)",
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ],
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: const Row(
+                              children: [
+                                Icon(Icons.style, size: 40),
+                                SizedBox(width: 20),
+                                Text(
+                                  "Chế độ Lật thẻ (Flashcard)",
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       GestureDetector(
                         onTap: () => setState(() => study = 2),
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
+                        child: Card(
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
-                            border: Border.all(color: Colors.blueAccent),
                           ),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.quiz, size: 40),
-                              SizedBox(width: 20),
-                              Text(
-                                "Chế độ Trắc nghiệm (Quiz)",
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ],
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: const Row(
+                              children: [
+                                Icon(Icons.quiz, size: 40),
+                                SizedBox(width: 20),
+                                Text(
+                                  "Chế độ Trắc nghiệm (Quiz)",
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       GestureDetector(
                         onTap: () => setState(() => study = 3),
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
+                        child: Card(
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
-                            border: Border.all(color: Colors.blueAccent),
                           ),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.list, size: 40),
-                              SizedBox(width: 20),
-                              Text(
-                                "Danh sách Flashcard đã đánh dấu",
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ],
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: const Row(
+                              children: [
+                                Icon(Icons.list, size: 40),
+                                SizedBox(width: 20),
+                                Text(
+                                  "Danh sách Flashcard đã đánh dấu",
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ],
                   )
+                // FLASHCARD
                 : study == 1
-                // LẬT THẺ
                 ? (flashcard == -1
                       ? Column(
                           children: [
                             Align(
                               alignment: Alignment.topLeft,
-                              child: TextButton.icon(
-                                onPressed: () => setState(() => study = 0),
-                                icon: const Icon(Icons.arrow_back),
-                                label: const Text("Quay lại"),
+                              child: Card(
+                                elevation: 2,
+                                child: TextButton.icon(
+                                  onPressed: () =>
+                                      setState(() => study = 0),
+                                  icon: const Icon(Icons.arrow_back),
+                                  label: const Text("Quay lại"),
+                                ),
                               ),
                             ),
                             const SizedBox(height: 10),
@@ -224,14 +479,11 @@ class _HomeState extends State<Home> {
                                         tuvungindex = 0;
                                         hienmatsau = false;
                                       }),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
+                                      child: Card(
+                                        elevation: 3,
+                                        shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(15),
-                                          border: Border.all(
-                                            color: Colors.blueAccent,
-                                          ),
                                         ),
                                         child: Column(
                                           mainAxisAlignment:
@@ -250,16 +502,19 @@ class _HomeState extends State<Home> {
                             ),
                           ],
                         )
-                      // FUNC LẬT THẺ
+                      // LẬT THẺ
                       : Column(
                           children: [
                             Align(
                               alignment: Alignment.topLeft,
-                              child: TextButton.icon(
-                                onPressed: () =>
-                                    setState(() => flashcard = -1),
-                                icon: const Icon(Icons.arrow_back),
-                                label: const Text("Quay lại"),
+                              child: Card(
+                                elevation: 2,
+                                child: TextButton.icon(
+                                  onPressed: () =>
+                                      setState(() => flashcard = -1),
+                                  icon: const Icon(Icons.arrow_back),
+                                  label: const Text("Quay lại"),
+                                ),
                               ),
                             ),
                             const Spacer(),
@@ -268,12 +523,13 @@ class _HomeState extends State<Home> {
                               style: const TextStyle(fontSize: 20),
                             ),
                             const SizedBox(height: 20),
+
                             GestureDetector(
                               onTap: () =>
                                   setState(() => hienmatsau = !hienmatsau),
                               child: Container(
                                 width: 320,
-                                height: 200,
+                                height: 220,
                                 decoration: BoxDecoration(
                                   color: hienmatsau
                                       ? Colors.green
@@ -307,11 +563,33 @@ class _HomeState extends State<Home> {
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
+
+                                    const SizedBox(height: 10),
+
+                                    IconButton(
+                                      icon: Icon(
+                                        tuvung[flashcard]![tuvungindex]['saved'] ==
+                                                true
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
+                                        color: Colors.white,
+                                        size: 30,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          tuvung[flashcard]![tuvungindex]['saved'] =
+                                              !(tuvung[flashcard]![tuvungindex]['saved'] ??
+                                                  false);
+                                        });
+                                      },
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
+
                             const SizedBox(height: 20),
+
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -349,72 +627,78 @@ class _HomeState extends State<Home> {
                             const Spacer(),
                           ],
                         ))
+                // DANH SÁCH FLASHCARD ĐÃ LƯU
+                : study == 3
+                ? Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Card(
+                          elevation: 2,
+                          child: TextButton.icon(
+                            onPressed: () => setState(() => study = 0),
+                            icon: const Icon(Icons.arrow_back),
+                            label: const Text("Quay lại"),
+                          ),
+                        ),
+                      ),
+
+                      Expanded(
+                        child: Builder(
+                          builder: (context) {
+                            List savedCards = [];
+
+                            tuvung.forEach((key, list) {
+                              for (var card in list) {
+                                if (card['saved'] == true) {
+                                  savedCards.add(card);
+                                }
+                              }
+                            });
+
+                            if (savedCards.isEmpty) {
+                              return const Center(
+                                child: Text(
+                                  "Chưa có flashcard nào được lưu",
+                                ),
+                              );
+                            }
+
+                            return ListView.builder(
+                              itemCount: savedCards.length,
+                              itemBuilder: (context, i) {
+                                return Card(
+                                  child: ListTile(
+                                    leading: const Icon(
+                                      Icons.favorite,
+                                      color: Colors.blueAccent,
+                                    ),
+                                    title: Text(savedCards[i]['en']),
+                                    subtitle: Text(savedCards[i]['vi']),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  )
+                // QUIZ
                 : (quiz == 0
-                      // CHỌN LOẠI QUIZ
                       ? Column(
                           children: [
                             Align(
                               alignment: Alignment.topLeft,
-                              child: TextButton.icon(
-                                onPressed: () => setState(() => study = 0),
-                                icon: const Icon(Icons.arrow_back),
-                                label: const Text("Quay lại"),
+                              child: Card(
+                                elevation: 2,
+                                child: TextButton.icon(
+                                  onPressed: () =>
+                                      setState(() => study = 0),
+                                  icon: const Icon(Icons.arrow_back),
+                                  label: const Text("Quay lại"),
+                                ),
                               ),
-                            ),
-                            const Spacer(),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: GestureDetector(
-                                    onTap: () => setState(() => quiz = 1),
-                                    child: Container(
-                                      height: 150,
-                                      margin: const EdgeInsets.all(5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(15),
-                                        border: Border.all(
-                                          color: Colors.blueAccent,
-                                        ),
-                                      ),
-                                      child: const Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.shuffle, size: 40),
-                                          Text("Đề Random"),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: GestureDetector(
-                                    onTap: () => setState(() => quiz = 2),
-                                    child: Container(
-                                      height: 150,
-                                      margin: const EdgeInsets.all(5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(15),
-                                        border: Border.all(
-                                          color: Colors.blueAccent,
-                                        ),
-                                      ),
-                                      child: const Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.list_alt, size: 40),
-                                          Text("Đề Tự chọn"),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
                             ),
                             const Spacer(),
                           ],
@@ -423,30 +707,22 @@ class _HomeState extends State<Home> {
                           children: [
                             Align(
                               alignment: Alignment.topLeft,
-                              child: TextButton.icon(
-                                onPressed: () => setState(() => quiz = 0),
-                                icon: const Icon(Icons.arrow_back),
-                                label: const Text("Quay lại"),
+                              child: Card(
+                                elevation: 2,
+                                child: TextButton.icon(
+                                  onPressed: () =>
+                                      setState(() => quiz = 0),
+                                  icon: const Icon(Icons.arrow_back),
+                                  label: const Text("Quay lại"),
+                                ),
                               ),
                             ),
                             const Spacer(),
-                            Text(
-                              quiz == 1 ? "Đề Random" : "Đề Tự chọn",
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 30),
-                            const Text(
-                              "Nội dung câu hỏi",
-                              textAlign: TextAlign.center,
-                            ),
+                            const Text("Nội dung câu hỏi"),
                             const Spacer(),
                           ],
                         )),
           ),
-
           // TRANG THÔNG TIN
           const AboutScreen(),
 
