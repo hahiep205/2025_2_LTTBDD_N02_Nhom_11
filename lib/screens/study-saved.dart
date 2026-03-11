@@ -36,6 +36,15 @@ class SavedFlashcardScreen extends StatelessWidget {
           ),
         ),
 
+        const SizedBox(height: 20),
+
+        const Text(
+          "Danh sách các từ đã đánh dấu:",
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+
+        const SizedBox(height: 20),
+
         Expanded(
           child: savedCards.isEmpty
               ? const Center(child: Text("Chưa có flashcard nào được lưu"))

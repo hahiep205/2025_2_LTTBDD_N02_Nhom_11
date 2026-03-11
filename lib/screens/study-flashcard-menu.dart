@@ -28,6 +28,15 @@ class FlashcardCategoryScreen extends StatelessWidget {
           ),
         ),
 
+        const SizedBox(height: 20),
+
+        const Text(
+          "Chọn chủ đề Lật thẻ",
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+
+        const SizedBox(height: 20),
+
         Expanded(
           child: GridView.builder(
             itemCount: categories.length,

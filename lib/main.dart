@@ -4,6 +4,7 @@ import 'screens/about_screen.dart';
 import 'screens/study_menu.dart';
 import 'screens/study-flashcard-menu.dart';
 import 'screens/study-saved.dart';
+import 'screens/study-quiz.dart';
 import 'data/vocabulary_data.dart';
 
 void main() {
@@ -42,18 +43,11 @@ class _HomeState extends State<Home> {
   String dapandung = "";
 
   void taocauhoi() {
-    // Lấy từ vựng hiện tại
     var word = quizwords[quizindex];
-
-    // Câu hỏi
     cauhoi = word['en'];
-
-    // Đáp án đúng
     dapandung = word['vi'];
 
     List<String> sai = [];
-
-    // Lấy tất cả đáp án sai
     tuvung.forEach((key, list) {
       for (var w in list) {
         if (w['vi'] != dapandung) {
@@ -61,14 +55,9 @@ class _HomeState extends State<Home> {
         }
       }
     });
-
-    // Trộn đáp án sai
     sai.shuffle();
 
-    // Tạo 4 phương án
     phuongan = [dapandung, sai[0], sai[1], sai[2]];
-
-    // Trộn vị trí đáp án
     phuongan.shuffle();
   }
 
@@ -329,7 +318,15 @@ class _HomeState extends State<Home> {
                             }),
                           ],
                         )
-                      : const Center(child: Text("Quiz đang phát triển")))
+                      : QuizScreen(
+                          quizWords: tuvung[quizchude]!,
+                          categoryName: categories[quizchude],
+                          onBack: () {
+                            setState(() {
+                              quizchude = -1;
+                            });
+                          },
+                        ))
                 : const SizedBox(),
           ),
 
