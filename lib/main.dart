@@ -31,6 +31,47 @@ class _HomeState extends State<Home> {
   int tuvungindex = 0;
   bool hienmatsau = false;
 
+  int quizchude = -1;
+  int quizindex = 0;
+  int diem = 0;
+
+  List<Map<String, dynamic>> quizwords = [];
+  List<String> phuongan = [];
+
+  String cauhoi = "";
+  String dapandung = "";
+
+  void taocauhoi() {
+    // Lấy từ vựng hiện tại
+    var word = quizwords[quizindex];
+
+    // Câu hỏi
+    cauhoi = word['en'];
+
+    // Đáp án đúng
+    dapandung = word['vi'];
+
+    List<String> sai = [];
+
+    // Lấy tất cả đáp án sai
+    tuvung.forEach((key, list) {
+      for (var w in list) {
+        if (w['vi'] != dapandung) {
+          sai.add(w['vi']);
+        }
+      }
+    });
+
+    // Trộn đáp án sai
+    sai.shuffle();
+
+    // Tạo 4 phương án
+    phuongan = [dapandung, sai[0], sai[1], sai[2]];
+
+    // Trộn vị trí đáp án
+    phuongan.shuffle();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,9 +82,10 @@ class _HomeState extends State<Home> {
       body: IndexedStack(
         index: stt,
         children: [
+          // INDEX 0: TRANG CHỦ
           const Center(child: Text('Trang chủ')),
 
-          // TRANG STUDY
+          // INDEX 1: TRANG STUDY
           Padding(
             padding: const EdgeInsets.all(10),
             child: study == 0
@@ -54,7 +96,7 @@ class _HomeState extends State<Home> {
                       });
                     },
                   )
-                // FLASHCARD MODE
+                // ================= FLASHCARD =================
                 : study == 1
                 ? (flashcard == -1
                       // CHỌN DANH MỤC
@@ -149,7 +191,6 @@ class _HomeState extends State<Home> {
 
                                     const SizedBox(height: 10),
 
-                                    // NÚT ĐÁNH DẤU
                                     IconButton(
                                       icon: Icon(
                                         tuvung[flashcard]![tuvungindex]['saved'] ==
@@ -174,7 +215,6 @@ class _HomeState extends State<Home> {
 
                             const SizedBox(height: 20),
 
-                            // NÚT CHUYỂN THẺ
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -215,11 +255,9 @@ class _HomeState extends State<Home> {
                                 ),
                               ],
                             ),
-
-                            const SizedBox(height: 20),
                           ],
                         ))
-                // SAVED FLASHCARD
+                // ================= SAVED =================
                 : study == 3
                 ? SavedFlashcardScreen(
                     tuvung: tuvung,
@@ -229,35 +267,76 @@ class _HomeState extends State<Home> {
                       });
                     },
                   )
-                : Center(
-                    child: Column(
-                      children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Card(
-                            elevation: 2,
-                            child: TextButton.icon(
-                              onPressed: () {
-                                setState(() {
-                                  study = 0;
-                                });
-                              },
-                              icon: const Icon(Icons.arrow_back),
-                              label: const Text("Quay lại"),
+                // ================= QUIZ =================
+                : study == 2
+                ? (quizchude == -1
+                      ? Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Card(
+                                elevation: 2,
+                                child: TextButton.icon(
+                                  onPressed: () {
+                                    setState(() {
+                                      study = 0;
+                                    });
+                                  },
+                                  icon: const Icon(Icons.arrow_back),
+                                  label: const Text("Quay lại"),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        const Text("Quiz Screen"),
-                      ],
-                    ),
-                  ),
+
+                            const SizedBox(height: 20),
+
+                            const Text(
+                              "Chọn chủ đề Quiz",
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            const SizedBox(height: 20),
+
+                            ...List.generate(categories.length, (i) {
+                              return Card(
+                                child: ListTile(
+                                  title: Text(categories[i]),
+                                  onTap: () {
+                                    setState(() {
+                                      quizchude = i;
+
+                                      quizwords = List.from(tuvung[i]!);
+                                      quizwords.shuffle();
+
+                                      if (quizwords.length > 10) {
+                                        quizwords = quizwords.sublist(
+                                          0,
+                                          10,
+                                        );
+                                      }
+
+                                      quizindex = 0;
+                                      diem = 0;
+
+                                      taocauhoi();
+                                    });
+                                  },
+                                ),
+                              );
+                            }),
+                          ],
+                        )
+                      : const Center(child: Text("Quiz đang phát triển")))
+                : const SizedBox(),
           ),
 
-          // TRANG THÔNG TIN
+          // INDEX 2: TRANG THÔNG TIN
           const AboutScreen(),
 
-          // TRANG CÀI ĐẶT
+          // INDEX 3: TRANG CÀI ĐẶT
           SettingsScreen(
             thongbao: thongbao,
             tienganh: tienganh,
@@ -268,7 +347,6 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: stt,
         type: BottomNavigationBarType.fixed,
