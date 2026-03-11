@@ -6,6 +6,7 @@ import 'screens/study-flashcard-menu.dart';
 import 'screens/study-saved.dart';
 import 'screens/study-quiz.dart';
 import 'data/vocabulary_data.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(
@@ -71,10 +72,18 @@ class _HomeState extends State<Home> {
       body: IndexedStack(
         index: stt,
         children: [
-          // INDEX 0: TRANG CHỦ
-          const Center(child: Text('Trang chủ')),
+          // TRANG CHỦ
+          HomeScreen(
+            tuvung: tuvung,
+            onNavigateStudy: (mode) {
+              setState(() {
+                stt = 1; // chuyển sang tab Học tập
+                study = mode; // chọn đúng mode
+              });
+            },
+          ),
 
-          // INDEX 1: TRANG STUDY
+          // TRANG STUDY
           Padding(
             padding: const EdgeInsets.all(10),
             child: study == 0
@@ -330,10 +339,10 @@ class _HomeState extends State<Home> {
                 : const SizedBox(),
           ),
 
-          // INDEX 2: TRANG THÔNG TIN
+          // TRANG THÔNG TIN
           const AboutScreen(),
 
-          // INDEX 3: TRANG CÀI ĐẶT
+          // TRANG CÀI ĐẶT
           SettingsScreen(
             thongbao: thongbao,
             tienganh: tienganh,
