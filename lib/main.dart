@@ -7,6 +7,7 @@ import 'screens/study-saved.dart';
 import 'screens/study-quiz.dart';
 import 'data/vocabulary_data.dart';
 import 'screens/home_screen.dart';
+import 'screens/app_text.dart';
 
 void main() {
   runApp(
@@ -64,9 +65,17 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final categories0 = tienganh ? categoriesEn : categories;
+    final t = AppText(tienganh);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flashcard'),
+        title: const Text(
+          'Flashcard',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: Colors.blueAccent,
       ),
       body: IndexedStack(
@@ -77,10 +86,11 @@ class _HomeState extends State<Home> {
             tuvung: tuvung,
             onNavigateStudy: (mode) {
               setState(() {
-                stt = 1; // chuyển sang tab Học tập
-                study = mode; // chọn đúng mode
+                stt = 1;
+                study = mode;
               });
             },
+            english: tienganh,
           ),
 
           // TRANG STUDY
@@ -93,13 +103,14 @@ class _HomeState extends State<Home> {
                         study = mode;
                       });
                     },
+                    english: tienganh,
                   )
                 // ================= FLASHCARD =================
                 : study == 1
                 ? (flashcard == -1
                       // CHỌN DANH MỤC
                       ? FlashcardCategoryScreen(
-                          categories: categories,
+                          categories: categories0,
                           onSelect: (i) {
                             setState(() {
                               flashcard = i;
@@ -112,6 +123,7 @@ class _HomeState extends State<Home> {
                               study = 0;
                             });
                           },
+                          english: tienganh,
                         )
                       // MÀN HÌNH FLASHCARD
                       : Column(
@@ -127,7 +139,7 @@ class _HomeState extends State<Home> {
                                     });
                                   },
                                   icon: const Icon(Icons.arrow_back),
-                                  label: const Text("Quay lại"),
+                                  label: Text(t.back),
                                 ),
                               ),
                             ),
@@ -135,7 +147,7 @@ class _HomeState extends State<Home> {
                             const SizedBox(height: 20),
 
                             Text(
-                              'Chủ đề: ${categories[flashcard]}',
+                              '${t.topic}${categories0[flashcard]}',
                               style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -264,6 +276,7 @@ class _HomeState extends State<Home> {
                         study = 0;
                       });
                     },
+                    english: tienganh,
                   )
                 // ================= QUIZ =================
                 : study == 2
@@ -281,16 +294,16 @@ class _HomeState extends State<Home> {
                                     });
                                   },
                                   icon: const Icon(Icons.arrow_back),
-                                  label: const Text("Quay lại"),
+                                  label: Text(t.back),
                                 ),
                               ),
                             ),
 
                             const SizedBox(height: 20),
 
-                            const Text(
-                              "Chọn chủ đề Quiz",
-                              style: TextStyle(
+                            Text(
+                              t.chooseTopicQuiz,
+                              style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -298,10 +311,10 @@ class _HomeState extends State<Home> {
 
                             const SizedBox(height: 20),
 
-                            ...List.generate(categories.length, (i) {
+                            ...List.generate(categories0.length, (i) {
                               return Card(
                                 child: ListTile(
-                                  title: Text(categories[i]),
+                                  title: Text(categories0[i]),
                                   onTap: () {
                                     setState(() {
                                       quizchude = i;
@@ -329,12 +342,13 @@ class _HomeState extends State<Home> {
                         )
                       : QuizScreen(
                           quizWords: tuvung[quizchude]!,
-                          categoryName: categories[quizchude],
+                          categoryName: categories0[quizchude],
                           onBack: () {
                             setState(() {
                               quizchude = -1;
                             });
                           },
+                          english: tienganh,
                         ))
                 : const SizedBox(),
           ),
@@ -350,33 +364,37 @@ class _HomeState extends State<Home> {
             batthongbao: (val) => setState(() => thongbao = val),
             battienganh: (val) => setState(() => tienganh = val),
             batdarkmode: (val) => setState(() => darkmode = val),
+            english: tienganh,
           ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: stt,
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.blueAccent,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         onTap: (i) {
           setState(() {
             stt = i;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: "Trang chủ",
+            label: t.navHome,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: "Học tập",
+            label: t.navStudy,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
-            label: "Thông tin",
+            label: t.navAbout,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: "Cài đặt",
+            label: t.navSettings,
           ),
         ],
       ),

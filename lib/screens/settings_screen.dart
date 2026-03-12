@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'app_text.dart';
 
 class SettingsScreen extends StatelessWidget {
   final bool thongbao;
@@ -7,6 +8,7 @@ class SettingsScreen extends StatelessWidget {
   final Function(bool) batthongbao;
   final Function(bool) battienganh;
   final Function(bool) batdarkmode;
+  final bool english;
 
   const SettingsScreen({
     super.key,
@@ -16,44 +18,49 @@ class SettingsScreen extends StatelessWidget {
     required this.batthongbao,
     required this.battienganh,
     required this.batdarkmode,
+    required this.english,
   });
 
   @override
   Widget build(BuildContext context) {
+    final t = AppText(english);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: ListView(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Text(
-              'Cấu hình ứng dụng',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              t.settingsTitle,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           SwitchListTile(
-            title: const Text('Thông báo'),
+            title: Text(t.settingNotif),
             secondary: const Icon(Icons.notifications),
             value: thongbao,
             onChanged: batthongbao,
           ),
           SwitchListTile(
-            title: const Text('Ngôn ngữ: Tiếng Anh'),
+            title: Text(t.settingLang),
             secondary: const Icon(Icons.language),
             value: tienganh,
             onChanged: battienganh,
           ),
           SwitchListTile(
-            title: const Text('Chế độ: Dark Mode'),
+            title: Text(t.settingDark),
             secondary: const Icon(Icons.dark_mode),
             value: darkmode,
             onChanged: batdarkmode,
           ),
           const Divider(),
-          const ListTile(
-            title: Text('Phiên bản ứng dụng'),
-            subtitle: Text('1.0.0'),
-            trailing: Icon(Icons.info_outline),
+          ListTile(
+            title: Text(t.settingVersion),
+            subtitle: const Text('1.0.0'),
+            trailing: const Icon(Icons.info_outline),
           ),
         ],
       ),

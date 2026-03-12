@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'app_text.dart';
 
 class StudyMenuScreen extends StatelessWidget {
   final Function(int) onSelect;
+  final bool english;
 
-  const StudyMenuScreen({super.key, required this.onSelect});
+  const StudyMenuScreen({
+    super.key,
+    required this.onSelect,
+    required this.english,
+  });
 
   Widget buildCard(icon, text, mode) {
     return GestureDetector(
@@ -30,11 +36,12 @@ class StudyMenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppText(english);
     return Column(
       children: [
-        buildCard(Icons.style, "Chế độ Lật thẻ (Flashcard)", 1),
-        buildCard(Icons.quiz, "Chế độ Trắc nghiệm (Quiz)", 2),
-        buildCard(Icons.list, "Danh sách Flashcard đã đánh dấu", 3),
+        buildCard(Icons.style, t.flashcard, 1),
+        buildCard(Icons.quiz, t.quiz, 2),
+        buildCard(Icons.list, t.savedList, 3),
       ],
     );
   }

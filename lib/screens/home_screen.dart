@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'app_text.dart';
 
 class HomeScreen extends StatelessWidget {
   final Map tuvung;
   final Function(int) onNavigateStudy;
+  final bool english;
 
   const HomeScreen({
     super.key,
     required this.tuvung,
     required this.onNavigateStudy,
+    required this.english,
   });
 
   int get tongtuvung =>
@@ -81,6 +84,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppText(english);
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -96,11 +100,11 @@ class HomeScreen extends StatelessWidget {
               color: Colors.blueAccent,
               borderRadius: BorderRadius.circular(16),
             ),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Xin chào!',
+                  AppText(english).greeting, //Xin chào!
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -109,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 6),
                 Text(
-                  'Hôm nay học gì nào?',
+                  AppText(english).subtitle, //Hôm nay học gì nào?
                   style: TextStyle(fontSize: 15, color: Colors.white70),
                 ),
               ],
@@ -120,22 +124,22 @@ class HomeScreen extends StatelessWidget {
 
           Row(
             children: [
-              studycount('$tongtuvung', 'Từ vựng', Icons.menu_book),
+              studycount('$tongtuvung', t.totalWords, Icons.menu_book),
               const SizedBox(width: 12),
-              studycount('$tongdaluu', 'Đã lưu', Icons.favorite),
+              studycount('$tongdaluu', t.saved, Icons.favorite),
             ],
           ),
 
           const SizedBox(height: 20),
 
-          const Text(
-            'Học tập nhanh',
+          Text(
+            t.quickLearn,
             style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
-          studyquick(Icons.style, 'Lật thẻ Flashcard', 1),
-          studyquick(Icons.quiz, 'Trắc nghiệm Quiz', 2),
-          studyquick(Icons.favorite, 'Từ đã đánh dấu', 3),
+          studyquick(Icons.style, t.flashcard, 1),
+          studyquick(Icons.quiz, t.quiz, 2),
+          studyquick(Icons.favorite, t.saved, 3),
         ],
       ),
     );

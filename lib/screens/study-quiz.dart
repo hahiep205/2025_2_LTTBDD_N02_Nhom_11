@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'app_text.dart';
 
 class QuizScreen extends StatefulWidget {
   final List<Map<String, dynamic>> quizWords;
   final String categoryName;
   final VoidCallback onBack;
+  final bool english;
 
   const QuizScreen({
     super.key,
     required this.quizWords,
     required this.categoryName,
     required this.onBack,
+    required this.english,
   });
 
   @override
@@ -36,7 +39,6 @@ class _QuizScreenState extends State<QuizScreen> {
     questions = List.from(widget.quizWords);
     questions.shuffle();
     if (questions.length > 10) questions = questions.sublist(0, 10);
-
     allOptions = questions.map((word) => _buildOptions(word)).toList();
   }
 
@@ -88,6 +90,8 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppText(widget.english);
+
     if (finished) {
       return Center(
         child: Padding(
@@ -96,37 +100,37 @@ class _QuizScreenState extends State<QuizScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 16),
-              const Text(
-                "Kết quả",
-                style: TextStyle(
+              Text(
+                t.result,
+                style: const TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 12),
               Text(
-                "$diem / ${questions.length} câu đúng",
+                t.resultText(diem, questions.length),
                 style: const TextStyle(fontSize: 22),
               ),
               const SizedBox(height: 8),
               Text(
                 diem == questions.length
-                    ? "Xuất sắc!"
+                    ? t.excellent
                     : diem >= questions.length ~/ 2
-                    ? "Khá tốt!"
-                    : "Trung bình!",
+                    ? t.good
+                    : t.average,
               ),
               const SizedBox(height: 30),
               ElevatedButton.icon(
                 onPressed: resetQuiz,
                 icon: const Icon(Icons.refresh),
-                label: const Text("Làm lại"),
+                label: Text(t.retry),
               ),
               const SizedBox(height: 12),
               OutlinedButton.icon(
                 onPressed: widget.onBack,
                 icon: const Icon(Icons.arrow_back),
-                label: const Text("Quay lại"),
+                label: Text(t.back),
               ),
             ],
           ),
@@ -146,7 +150,7 @@ class _QuizScreenState extends State<QuizScreen> {
           child: TextButton.icon(
             onPressed: widget.onBack,
             icon: const Icon(Icons.arrow_back),
-            label: const Text("Quay lại"),
+            label: Text(t.back),
           ),
         ),
 
@@ -179,7 +183,7 @@ class _QuizScreenState extends State<QuizScreen> {
         Align(
           alignment: Alignment.centerRight,
           child: Chip(
-            label: Text("Điểm: $diem"),
+            label: Text("${t.score}: $diem"),
             backgroundColor: Colors.lightBlueAccent,
           ),
         ),
@@ -195,13 +199,16 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
           child: Column(
             children: [
-              const Text(
-                "Câu hỏi",
-                style: TextStyle(color: Colors.white70, fontSize: 14),
+              Text(
+                t.question,
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 14,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
-                '"${word['en']}" nghĩa là gì?',
+                t.questionText(word['en']),
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 22,
@@ -291,9 +298,7 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
               onPressed: nextQuestion,
               child: Text(
-                index + 1 >= questions.length
-                    ? "Xem kết quả"
-                    : "Câu tiếp theo →",
+                index + 1 >= questions.length ? t.seeResult : t.next,
                 style: const TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),

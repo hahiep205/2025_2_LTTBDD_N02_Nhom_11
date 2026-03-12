@@ -6,6 +6,14 @@ final List<String> categories = [
   "Trường học",
 ];
 
+final List<String> categoriesEn = [
+  "Animals",
+  "Fruits",
+  "Transportation",
+  "Family",
+  "School",
+];
+
 final Map<int, List<Map<String, dynamic>>> tuvung = {
   0: [
     {

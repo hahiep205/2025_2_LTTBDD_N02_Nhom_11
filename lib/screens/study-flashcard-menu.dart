@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'app_text.dart';
 
 class FlashcardCategoryScreen extends StatelessWidget {
   final List categories;
   final Function(int) onSelect;
   final VoidCallback onBack;
+  final bool english;
 
   const FlashcardCategoryScreen({
     super.key,
     required this.categories,
     required this.onSelect,
     required this.onBack,
+    required this.english,
   });
 
   @override
   Widget build(BuildContext context) {
+    final t = AppText(english);
     return Column(
       children: [
         Align(
@@ -23,16 +27,19 @@ class FlashcardCategoryScreen extends StatelessWidget {
             child: TextButton.icon(
               onPressed: onBack,
               icon: const Icon(Icons.arrow_back),
-              label: const Text("Quay lại"),
+              label: Text(t.back),
             ),
           ),
         ),
 
         const SizedBox(height: 20),
 
-        const Text(
-          "Chọn chủ đề Lật thẻ",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        Text(
+          t.chooseTopicFlashcard,
+          style: const TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
         ),
 
         const SizedBox(height: 20),
