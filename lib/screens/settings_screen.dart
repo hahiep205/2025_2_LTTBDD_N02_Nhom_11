@@ -25,7 +25,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = AppText(english);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
       child: ListView(
         children: [
           Padding(
@@ -38,29 +38,64 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
           ),
-          SwitchListTile(
-            title: Text(t.settingNotif),
-            secondary: const Icon(Icons.notifications),
-            value: thongbao,
-            onChanged: batthongbao,
+          Card(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: SwitchListTile(
+              title: Text(t.settingNotif),
+              secondary: const Icon(
+                Icons.notifications,
+                color: Colors.blueAccent,
+              ),
+              value: thongbao,
+              onChanged: batthongbao,
+            ),
           ),
-          SwitchListTile(
-            title: Text(t.settingLang),
-            secondary: const Icon(Icons.language),
-            value: tienganh,
-            onChanged: battienganh,
+          const SizedBox(height: 8),
+          Card(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: SwitchListTile(
+              title: Text(t.settingLang),
+              secondary: const Icon(
+                Icons.language,
+                color: Colors.blueAccent,
+              ),
+              value: tienganh,
+              onChanged: battienganh,
+            ),
           ),
-          SwitchListTile(
-            title: Text(t.settingDark),
-            secondary: const Icon(Icons.dark_mode),
-            value: darkmode,
-            onChanged: batdarkmode,
+          const SizedBox(height: 8),
+          Card(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: SwitchListTile(
+              title: Text(t.settingDark),
+              secondary: const Icon(
+                Icons.dark_mode,
+                color: Colors.blueAccent,
+              ),
+              value: darkmode,
+              onChanged: batdarkmode,
+            ),
           ),
-          const Divider(),
-          ListTile(
-            title: Text(t.settingVersion),
-            subtitle: const Text('1.0.0'),
-            trailing: const Icon(Icons.info_outline),
+          const SizedBox(height: 16),
+          Card(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: ListTile(
+              title: Text(t.settingVersion),
+              subtitle: const Text('1.0.0'),
+              trailing: const Icon(Icons.info_outline),
+            ),
           ),
         ],
       ),
