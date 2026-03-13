@@ -93,47 +93,137 @@ class _QuizScreenState extends State<QuizScreen> {
     final t = AppText(widget.english);
 
     if (finished) {
-      return Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 16),
-              Text(
-                t.result,
-                style: const TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
+      final String descrip = diem == questions.length
+          ? t.excellent
+          : diem >= questions.length ~/ 2
+          ? t.good
+          : t.average;
+
+      return Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Result card
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 32,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                children: [
+                  const Icon(
+                    Icons.emoji_events,
+                    size: 52,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    t.result,
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    t.resultText(diem, questions.length),
+                    style: const TextStyle(
+                      fontSize: 22,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    descrip,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.white70,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            // Buttons row
+            Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(12),
+                      onTap: widget.onBack,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.arrow_back,
+                              color: Colors.blueAccent,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              t.back,
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.blueAccent,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                t.resultText(diem, questions.length),
-                style: const TextStyle(fontSize: 22),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                diem == questions.length
-                    ? t.excellent
-                    : diem >= questions.length ~/ 2
-                    ? t.good
-                    : t.average,
-              ),
-              const SizedBox(height: 30),
-              ElevatedButton.icon(
-                onPressed: resetQuiz,
-                icon: const Icon(Icons.refresh),
-                label: Text(t.retry),
-              ),
-              const SizedBox(height: 12),
-              OutlinedButton.icon(
-                onPressed: widget.onBack,
-                icon: const Icon(Icons.arrow_back),
-                label: Text(t.back),
-              ),
-            ],
-          ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Card(
+                    elevation: 3,
+                    color: Colors.blueAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(12),
+                      onTap: resetQuiz,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.refresh, color: Colors.white),
+                            const SizedBox(width: 8),
+                            Text(
+                              t.retry,
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       );
     }
