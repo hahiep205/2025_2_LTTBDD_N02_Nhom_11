@@ -269,7 +269,7 @@ class _HomeState extends State<Home> {
                         ))
                 // ================= SAVED =================
                 : study == 3
-                ? SavedFlashcardScreen(
+                ? thedadanhdau(
                     tuvung: tuvung,
                     onBack: () {
                       setState(() {
@@ -354,7 +354,7 @@ class _HomeState extends State<Home> {
           ),
 
           // TRANG THÔNG TIN
-          const AboutScreen(),
+          AboutScreen(english: tienganh),
 
           // TRANG CÀI ĐẶT
           SettingsScreen(

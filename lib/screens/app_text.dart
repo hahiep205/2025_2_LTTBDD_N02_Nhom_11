@@ -6,11 +6,11 @@ class AppText {
   String get subtitle =>
       english ? 'What to learn today?' : 'Hôm nay học gì nào?';
   String get totalWords => english ? 'Vocabulary' : 'Từ vựng';
-  String get saved => english ? 'Saved' : 'Đã lưu';
+  String get saved => english ? ' Saved Words' : 'Từ vựng đã đánh dấu';
   String get quickLearn => english ? 'Quick Study' : 'Học tập nhanh';
   String get flashcard => english ? 'Flashcard' : 'Lật thẻ Flashcard';
   String get quiz => english ? 'Quiz' : 'Trắc nghiệm Quiz';
-  String get savedList => english ? 'Saved Words' : 'Từ đã đánh dấu';
+  String get savedList => english ? 'Saved Words' : 'Từ vựng đã đánh dấu';
   String get back => english ? 'Back' : 'Quay lại';
   String get chooseTopicFlashcard =>
       english ? 'Choose Flashcard Topic' : 'Chọn chủ đề Lật thẻ';
@@ -18,8 +18,9 @@ class AppText {
       english ? 'Choose Quiz Topic' : 'Chọn chủ đề Quiz';
   String get savedTitle =>
       english ? 'Saved flashcards:' : 'Danh sách các từ đã đánh dấu:';
-  String get noSaved =>
-      english ? 'No saved flashcards' : 'Chưa có flashcard nào được lưu';
+  String get noSaved => english
+      ? 'No saved flashcards'
+      : 'Chưa có flashcard nào được đánh dấu';
   String get result => english ? 'Result' : 'Kết quả';
   String get retry => english ? 'Retry' : 'Làm lại';
   String get next => english ? 'Next →' : 'Câu tiếp theo →';
@@ -47,4 +48,13 @@ class AppText {
   String get settingDark => english ? 'Dark Mode' : 'Chế độ: Dark Mode';
   String get settingVersion =>
       english ? 'App Version' : 'Phiên bản ứng dụng';
+  String get infoGroup => english
+      ? 'GROUP 11 - Mobile Device Programming'
+      : 'NHÓM 11 - Lập Trình Cho Thiết Bị Di Động';
+  String get infoClass => english
+      ? 'Course: CSE702027-1-2-25(N02)'
+      : 'Lớp học phần: CSE702027-1-2-25(N02)';
+  String get infoMembers => english ? 'Members' : 'Thành viên';
+  String get infoVersion => english ? 'Version' : 'Phiên bản';
+  String get infoYear => english ? 'Year' : 'Năm';
 }

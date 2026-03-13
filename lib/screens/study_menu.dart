@@ -24,9 +24,15 @@ class StudyMenuScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Row(
             children: [
-              Icon(icon, size: 40),
+              Icon(icon, size: 40, color: Colors.blueAccent),
               const SizedBox(width: 20),
               Text(text, style: const TextStyle(fontSize: 18)),
+              const Spacer(),
+              const Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+                color: Colors.grey,
+              ),
             ],
           ),
         ),

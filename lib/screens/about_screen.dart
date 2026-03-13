@@ -1,40 +1,155 @@
 import 'package:flutter/material.dart';
+import 'app_text.dart';
 
 class AboutScreen extends StatelessWidget {
-  const AboutScreen({super.key});
+  final bool english;
+  const AboutScreen({super.key, required this.english});
+
+  Widget _statCard(String value, String label, IconData icon) {
+    return Expanded(
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 18),
+          child: Column(
+            children: [
+              Icon(icon, color: Colors.blueAccent, size: 28),
+              const SizedBox(height: 8),
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                label,
+                style: const TextStyle(fontSize: 13, color: Colors.grey),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget memberCard(String name, String mssv) {
+    return Card(
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      child: Padding(
+        padding: const EdgeInsets.all(18),
+        child: Row(
+          children: [
+            const Icon(Icons.person, size: 36, color: Colors.blueAccent),
+            const SizedBox(width: 20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'MSSV: $mssv',
+                  style: const TextStyle(fontSize: 13, color: Colors.grey),
+                ),
+              ],
+            ),
+            const Spacer(),
+            const Icon(Icons.info_outline, color: Colors.grey),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
+    final t = AppText(english);
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CircleAvatar(
-            radius: 45,
-            backgroundColor: Colors.blueAccent,
-            child: Icon(Icons.group, size: 42, color: Colors.white),
-          ),
-          const SizedBox(height: 15),
-          const Text(
-            'NHÓM 11 - Lập Trình Cho Thiết Bị Di Động',
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 20),
-          Card(
-            elevation: 2,
-            child: ListTile(
-              leading: const Icon(Icons.person, color: Colors.blueAccent),
-              title: const Text(
-                'Hà Văn Hiệp',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
+          // Banner header
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 24,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.blueAccent,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  radius: 28,
+                  backgroundColor: Colors.white24,
+                  child: Icon(Icons.group, size: 30, color: Colors.white),
                 ),
-              ),
-              subtitle: const Text('MSSV: 23010104'),
+                const SizedBox(width: 16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      t.infoGroup,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      t.infoClass,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.white70,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
+
+          const SizedBox(height: 20),
+
+          // Stat cards
+          Row(
+            children: [
+              _statCard('1.0.0', t.infoVersion, Icons.phone_android),
+              const SizedBox(width: 12),
+              _statCard('2025', t.infoYear, Icons.calendar_today),
+            ],
+          ),
+
+          const SizedBox(height: 20),
+
+          // Members section
+          Text(
+            t.infoMembers,
+            style: const TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          memberCard('Hà Văn Hiệp', '23010104'),
         ],
       ),
     );

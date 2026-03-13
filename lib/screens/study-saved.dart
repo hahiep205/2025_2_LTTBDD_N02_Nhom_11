@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'app_text.dart';
 
-class SavedFlashcardScreen extends StatelessWidget {
+class thedadanhdau extends StatefulWidget {
   final Map tuvung;
   final VoidCallback onBack;
   final bool english;
 
-  const SavedFlashcardScreen({
+  const thedadanhdau({
     super.key,
     required this.tuvung,
     required this.onBack,
@@ -14,12 +14,22 @@ class SavedFlashcardScreen extends StatelessWidget {
   });
 
   @override
+  State<thedadanhdau> createState() => _thedadanhdauState();
+}
+
+class _thedadanhdauState extends State<thedadanhdau> {
+  void _unsave(Map card) {
+    setState(() {
+      card['saved'] = false;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final t = AppText(english);
+    final t = AppText(widget.english);
 
     List savedCards = [];
-
-    tuvung.forEach((key, list) {
+    widget.tuvung.forEach((key, list) {
       for (var card in list) {
         if (card['saved'] == true) {
           savedCards.add(card);
@@ -34,7 +44,7 @@ class SavedFlashcardScreen extends StatelessWidget {
           child: Card(
             elevation: 2,
             child: TextButton.icon(
-              onPressed: onBack,
+              onPressed: widget.onBack,
               icon: const Icon(Icons.arrow_back),
               label: Text(t.back),
             ),
@@ -67,6 +77,13 @@ class SavedFlashcardScreen extends StatelessWidget {
                         ),
                         title: Text(savedCards[i]['en']),
                         subtitle: Text(savedCards[i]['vi']),
+                        trailing: IconButton(
+                          icon: const Icon(
+                            Icons.delete_outline,
+                            color: Colors.redAccent,
+                          ),
+                          onPressed: () => _unsave(savedCards[i]),
+                        ),
                       ),
                     );
                   },
