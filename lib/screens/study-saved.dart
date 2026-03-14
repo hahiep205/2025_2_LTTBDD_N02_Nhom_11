@@ -18,7 +18,7 @@ class thedadanhdau extends StatefulWidget {
 }
 
 class _thedadanhdauState extends State<thedadanhdau> {
-  void _unsave(Map card) {
+  void unsave(Map card) {
     setState(() {
       card['saved'] = false;
     });
@@ -82,7 +82,7 @@ class _thedadanhdauState extends State<thedadanhdau> {
                             Icons.delete_outline,
                             color: Colors.redAccent,
                           ),
-                          onPressed: () => _unsave(savedCards[i]),
+                          onPressed: () => unsave(savedCards[i]),
                         ),
                       ),
                     );

@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppText(english).greeting, //Xin chào!
+                  AppText(english).greeting, // Xin chào!
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -113,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 6),
                 Text(
-                  AppText(english).subtitle, //Hôm nay học gì nào?
+                  AppText(english).subtitle,
                   style: TextStyle(fontSize: 15, color: Colors.white70),
                 ),
               ],

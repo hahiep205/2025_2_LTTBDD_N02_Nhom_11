@@ -11,7 +11,7 @@ class StudyMenuScreen extends StatelessWidget {
     required this.english,
   });
 
-  Widget buildCard(icon, text, mode) {
+  Widget taocard(icon, text, mode) {
     return GestureDetector(
       onTap: () => onSelect(mode),
       child: Card(
@@ -45,9 +45,9 @@ class StudyMenuScreen extends StatelessWidget {
     final t = AppText(english);
     return Column(
       children: [
-        buildCard(Icons.style, t.flashcard, 1),
-        buildCard(Icons.quiz, t.quiz, 2),
-        buildCard(Icons.list, t.savedList, 3),
+        taocard(Icons.style, t.flashcard, 1),
+        taocard(Icons.quiz, t.quiz, 2),
+        taocard(Icons.list, t.savedList, 3),
       ],
     );
   }

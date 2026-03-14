@@ -83,7 +83,7 @@ class AboutScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Banner header
+          // Banner ở đầu
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(
@@ -129,18 +129,16 @@ class AboutScreen extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          // Stat cards
           Row(
             children: [
               _statCard('1.0.0', t.infoVersion, Icons.phone_android),
               const SizedBox(width: 12),
-              _statCard('2025', t.infoYear, Icons.calendar_today),
+              _statCard('2026', t.infoYear, Icons.calendar_today),
             ],
           ),
 
           const SizedBox(height: 20),
 
-          // Members section
           Text(
             t.infoMembers,
             style: const TextStyle(

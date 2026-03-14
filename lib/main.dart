@@ -5,7 +5,7 @@ import 'screens/study_menu.dart';
 import 'screens/study-flashcard-menu.dart';
 import 'screens/study-saved.dart';
 import 'screens/study-quiz.dart';
-import 'data/vocabulary_data.dart';
+import 'data/data.dart';
 import 'screens/home_screen.dart';
 import 'screens/app_text.dart';
 
