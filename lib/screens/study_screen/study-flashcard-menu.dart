@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'app_text.dart';
+import '../../data/app_text.dart';
 
 class FlashcardCategoryScreen extends StatelessWidget {
   final List categories;
